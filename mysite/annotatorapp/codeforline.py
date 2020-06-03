@@ -72,8 +72,8 @@ def getdatafromsite(inputsent):  # Scrapping data from site
                     word_ = wordtable.table.tr.td.string
                     onclickdatas_ = wordtable.table.tr.td.get('onclick')
                     for onclickdata_ in onclickdatas_.split("<br>"):  # required splits carried out at positions stated
-                        morphslist_ = re.findall(r'{ (.*?) }', onclickdata_)  # .split(' | ')
-                        ldata = str(re.search(r'{.*?}\[(.*)\]', onclickdata_).group(1))
+                        morphslist_ = re.findall(r'{(.*?)}', onclickdata_)  # .split(' | ')
+                        ldata = str(re.search(r'\[(.*)\]{.*?}', onclickdata_).group(1))                        
                         ldata = str(re.sub(r'</?a.*?>|</?i>', "", ldata))
 
                         lemmadata = ldata.split(" ")
